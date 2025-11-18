@@ -1,15 +1,15 @@
 # Tomplay Technical Challenge: The Playlist Builder
 
-**Role:** Senior Unity Engineer (UI Focus)
+**Role:** Senior C# / UI Engineer (Unity UI Toolkit)
 **Estimated Time:** 2-3 Hours
 
 ## The Mission
 
 You are prototyping a **"Playlist Builder"** feature. The user needs to browse the catalogue of available scores and organize them into one of their cloud playlists.
 
-### The Requirements
+## The Requirements
 
-#### 1. The Service (Provided in Project)
+### 1. The Service (Provided in Project)
 
 We have provided a script `ScoreService.cs` (Namespace: `Cloud`) in the template project. This script simulates a backend API with database access. It is accessible via the singleton `ScoreService.Instance`.
 
@@ -22,7 +22,7 @@ We have provided a script `ScoreService.cs` (Namespace: `Cloud`) in the template
 - **Constraint:** You should treat this class as if it were in a separate assembly (Black Box). You may not change its logic.
 - **Behavior:** It is slow (latency) and unreliable (throws exceptions ~20% of the time).
 
-#### 2. The User Interface
+### 2. The User Interface
 
 Using **Unity UI Toolkit (UXML/USS)**, create a responsive screen split into two main areas.
 
@@ -38,7 +38,15 @@ Using **Unity UI Toolkit (UXML/USS)**, create a responsive screen split into two
 **Responsiveness:**
 The UI must handle scaling gracefully. It is strictly required that the layout remains usable and readable in both **16:9 (Landscape)** and **1:1 (Square)** aspect ratios without elements overlapping.
 
-#### 3. Functionality & Logic
+### 3. Functionality & Logic
+
+> **Timeboxing tip:** Within the 2–3 hour window, it’s perfectly fine if you don’t implement everything. Prioritize:
+> - Basic layout and data flow (playlists + library).
+> - Search & filtering via `FetchScoresFromCatalogue`.
+> - Adding/removing items and updating total duration.
+> - Handling loading/error states for service calls.
+>
+> Treat the Bonus Points as strictly optional extras.
 
 - **Initialization (Async Chaining):**
     1.  On start, fetch the user's playlist IDs using `GetUserPlaylistIds`.
@@ -50,42 +58,58 @@ The UI must handle scaling gracefully. It is strictly required that the layout r
     - Because the server limits the number of results, you must implement the Search function calling `FetchScoresFromCatalogue(filterString)`.
     - The search should trigger when the text changes (or is submitted).
     - **Do not implement local paging.** Rely on the filter to find specific items.
-- **Interaction:** Clicking a "+" button on an item in the Library adds it to the active Playlist (Right Panel).
+- **Interaction:** Clicking a "+" button on an item in the Library adds it to the active Playlist (Right Panel). Clicking a "-" (trash icon) button on an item in the Playlist removes it.
 - **Pro Label:** Any score longer than **4 minutes** is considered a "Pro" score. These items must have a distinct visual marker (e.g., a gold border or "PRO" badge) in the list.
 - **Reactivity:** The "Total Duration" must update immediately when items are added or removed.
 - **Saving:** When the playlist changes, you must call `UpdatePlaylist` to sync the changes to the active Playlist ID.
 
-### Technical Constraints (Strict)
+## Technical Constraints (Strict)
 To ensure this code is production-ready, you must adhere to these constraints:
 
-#### 1. No UI Logic in Data Classes
+### 1. No UI Logic in Data Classes
 Your core logic classes (Data Managers, Service wrappers) must **not** reference the `UnityEngine.UIElements` namespace. They should handle data only.
 
-#### 2. Controller/View Separation
+### 2. Controller/View Separation
 You may update the UI manually (querying elements) or use binding, but your UI code should be distinct from your business logic.
 
-#### 3. Non-Blocking & Cancellation
+### 3. Non-Blocking & Cancellation
 The UI must never freeze. Additionally, since the Service accepts a `CancellationToken`, you should use it to cancel stale requests (e.g., fast typing in the search bar).
 
-#### 4. Strict UI Toolkit
+### 4. Strict UI Toolkit
 Do not use IMGUI (`OnGUI`) or the old Canvas system (`UGUI`).
 
-### Bonus Points (Nice to have)
+## Bonus Points (Nice to have)
 If you have extra time, we love seeing attention to detail:
 
 1.  **Juicing & Polish:** Add visual feedback (animations, tweens, or particle effects) when items are added to the playlist. Make the app "feel" good to use.
 2.  **Drag & Drop:** Allow the user to reorder items inside the Playlist.
 3.  **Advanced Responsiveness:** While 16:9 and 1:1 are required, bonus points if you implement a full layout shift (e.g., stacking panels vertically) for **Portrait (9:16)**.
 
-### Deliverables
+## Deliverables
 
-#### 1. The Unity Project
+### 1. The Unity Project
 A zip file or git repo.
 
-#### 2. The Walkthrough (Mandatory)
+### 2. The Walkthrough (Mandatory)
 A short (2-3 minute) video recording (Google Drive, YouTube unlisted, etc.) where you:
 
 - Show the app running.
 - **Explain your architecture:** Walk us through your scripts and explain *how* the data moves from the Service to the UI. Explain *why* you organized the code this way.
 
 *(Note: We value your ability to explain your technical decisions as much as the code itself.)*
+
+## Environment
+
+- Unity: 6000.0.58f2 (Unity 6.0 or later)
+- It’s fine to run and test in the Editor only (no build required).
+- You may use additional packages if you wish, but please mention them in a short README.
+
+## How we’ll evaluate
+
+We care more about architecture and clarity than “pixel-perfect UI”. In order of importance:
+
+1. Separation of concerns (no UI logic in data classes, clean layering).
+2. Asynchronous flow & error handling (including use of CancellationToken).
+3. UI Toolkit usage and responsiveness.
+4. Code readability (naming, structure, small functions).
+5. Bonus features / polish if time allowed.
