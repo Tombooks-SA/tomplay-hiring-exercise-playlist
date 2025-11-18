@@ -7,6 +7,9 @@
 
 You are prototyping a **"Playlist Builder"** feature. The user needs to browse the catalogue of available scores and organize them into one of their cloud playlists.
 
+> [!CAUTION]
+> Please do not fork this repository via GitHub UI to avoid exposing your solution. Clone it locally and push to your own private repository or send us a Zip.
+
 ## The Requirements
 
 ### 1. The Service (Provided in Project)
@@ -86,8 +89,6 @@ If you have extra time, we love seeing attention to detail:
 3.  **Advanced Responsiveness:** While 16:9 and 1:1 are required, bonus points if you implement a full layout shift (e.g., stacking panels vertically) for **Portrait (9:16)**.
 
 ## Deliverables
-> [!CAUTION]
-> Please do not fork this repository via GitHub UI to avoid exposing your solution. Clone it locally and push to your own private repository or send us a Zip.
 
 ### 1. The Unity Project
 A zip file or git repo.
