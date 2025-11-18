@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomplay Playlist Builder Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Custom Scrollbar for a "Unity Editor / App" feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+        
+        .pro-glow {
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-neutral-900 text-white h-screen flex flex-col overflow-hidden font-sans antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- App Header -->
+    <header class="bg-neutral-800 border-b border-neutral-700 p-4 flex justify-between items-center shrink-0 shadow-md z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gradient-to-tr from-orange-600 to-red-500 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-music text-white text-sm"></i>
+            </div>
+            <h1 class="font-bold text-lg tracking-wide text-neutral-100">Playlist Builder <span class="text-xs font-normal text-neutral-400 ml-2 bg-neutral-700 px-2 py-0.5 rounded-full">Challenge Mockup</span></h1>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+            <span class="text-neutral-400"><i class="fa-solid fa-user mr-2"></i>Candidate View</span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex overflow-hidden">
+        
+        <!-- LEFT PANEL: Library -->
+        <section class="w-1/2 flex flex-col border-r border-neutral-700 bg-neutral-900/50 relative">
+            
+            <!-- Panel Header -->
+            <div class="p-4 border-b border-neutral-700 bg-neutral-800/50 backdrop-blur-sm flex justify-between items-center">
+                <h2 class="font-semibold text-neutral-200 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-neutral-400"></i> Library
+                </h2>
+                <!-- Bonus: Search Mockup -->
+                <div class="relative">
+                    <input type="text" placeholder="Search scores..." class="bg-neutral-950 border border-neutral-700 rounded-full py-1 px-3 pl-8 text-xs w-48 focus:outline-none focus:border-orange-500 transition-colors text-neutral-300">
+                    <i class="fa-solid fa-search absolute left-2.5 top-1.5 text-neutral-600 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- List Container -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                
+                <!-- Standard Item -->
+                <div class="group bg-neutral-800 hover:bg-neutral-750 border border-neutral-700 rounded-lg p-3 flex justify-between items-center transition-all hover:border-neutral-600 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-neutral-700 rounded flex items-center justify-center text-neutral-500 font-serif text-lg">
+                            M
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-sm text-neutral-200">Sonata No. 16 in C Major</h3>
+                            <p class="text-xs text-neutral-400">W.A. Mozart</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs bg-green-900/30 text-green-400 border border-green-800 px-2 py-0.5 rounded">Easy</span>
+                        <button class="w-8 h-8 rounded-full bg-neutral-700 hover:bg-orange-600 text-white flex items-center justify-center transition-colors group-hover:bg-neutral-600 group-hover:hover:bg-orange-600">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PRO Item (> 4 mins) -->
+                <div class="group bg-neutral-800 hover:bg-neutral-750 border border-yellow-600/50 rounded-lg p-3 flex justify-between items-center transition-all hover:border-yellow-500 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer relative overflow-hidden pro-glow">
+                    <!-- Pro Badge -->
+                    <div class="absolute -right-3 top-2 bg-yellow-600 text-[0.6rem] font-bold px-4 transform rotate-45 shadow-sm text-black">PRO</div>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-neutral-700 rounded flex items-center justify-center text-neutral-500 font-serif text-lg">
+                            B
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-sm text-yellow-50">Moonlight Sonata (Mvt 1)</h3>
+                            <p class="text-xs text-neutral-400">L. van Beethoven • <span class="text-neutral-500">5:15</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 mr-4">
+                        <span class="text-xs bg-red-900/30 text-red-400 border border-red-800 px-2 py-0.5 rounded">Hard</span>
+                        <button class="w-8 h-8 rounded-full bg-neutral-700 hover:bg-orange-600 text-white flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Standard Item -->
+                <div class="group bg-neutral-800 hover:bg-neutral-750 border border-neutral-700 rounded-lg p-3 flex justify-between items-center transition-all hover:border-neutral-600 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-neutral-700 rounded flex items-center justify-center text-neutral-500 font-serif text-lg">
+                            C
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-sm text-neutral-200">Nocturne Op. 9 No. 2</h3>
+                            <p class="text-xs text-neutral-400">F. Chopin</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-800 px-2 py-0.5 rounded">Medium</span>
+                        <button class="w-8 h-8 rounded-full bg-neutral-700 hover:bg-orange-600 text-white flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                 <!-- Standard Item -->
+                 <div class="group bg-neutral-800 hover:bg-neutral-750 border border-neutral-700 rounded-lg p-3 flex justify-between items-center transition-all hover:border-neutral-600 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-neutral-700 rounded flex items-center justify-center text-neutral-500 font-serif text-lg">
+                            H
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-sm text-neutral-200">Main Theme (Interstellar)</h3>
+                            <p class="text-xs text-neutral-400">Hans Zimmer</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs bg-yellow-900/30 text-yellow-400 border border-yellow-800 px-2 py-0.5 rounded">Medium</span>
+                        <button class="w-8 h-8 rounded-full bg-neutral-700 hover:bg-orange-600 text-white flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Simulation of Loading/Error State (Hidden by default in mockup, visualized here for context) -->
+            <!-- 
+            <div class="absolute inset-0 bg-neutral-900/80 backdrop-blur flex flex-col items-center justify-center z-20">
+                 <div class="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                 <p class="text-neutral-300 text-sm">Loading Library...</p>
+            </div> 
+            -->
+        </section>
+
+        <!-- RIGHT PANEL: Playlist -->
+        <section class="w-1/2 flex flex-col bg-neutral-950">
+            
+            <!-- Panel Header -->
+            <div class="p-4 border-b border-neutral-800 bg-neutral-900 flex justify-between items-center shadow-sm z-10">
+                <h2 class="font-semibold text-neutral-200 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ul text-orange-500"></i> My Playlist
+                </h2>
+                <button class="text-xs text-neutral-500 hover:text-neutral-300 transition-colors">Clear All</button>
+            </div>
+
+            <!-- Playlist Items -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-2">
+                
+                <!-- Playlist Item 1 -->
+                <div class="bg-neutral-800/40 border-l-2 border-orange-500 p-3 rounded-r-md flex justify-between items-center group">
+                    <div class="flex items-center gap-3">
+                        <div class="text-neutral-500 text-xs font-mono w-4">01</div>
+                        <div>
+                            <h4 class="text-sm text-neutral-200">Moonlight Sonata (Mvt 1)</h4>
+                            <p class="text-[10px] text-neutral-500">Beethoven</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs font-mono text-neutral-400">05:15</span>
+                        <button class="text-neutral-600 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Playlist Item 2 -->
+                <div class="bg-neutral-800/40 border-l-2 border-orange-500 p-3 rounded-r-md flex justify-between items-center group">
+                    <div class="flex items-center gap-3">
+                        <div class="text-neutral-500 text-xs font-mono w-4">02</div>
+                        <div>
+                            <h4 class="text-sm text-neutral-200">Nocturne Op. 9 No. 2</h4>
+                            <p class="text-[10px] text-neutral-500">Chopin</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs font-mono text-neutral-400">04:30</span>
+                        <button class="text-neutral-600 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Placeholder for Empty State (Hidden when populated) -->
+                <!-- 
+                <div class="h-full flex flex-col items-center justify-center text-neutral-600 opacity-50">
+                    <i class="fa-solid fa-music text-4xl mb-2"></i>
+                    <p class="text-sm">Your setlist is empty</p>
+                </div> 
+                -->
+
+            </div>
+
+            <!-- Summary Footer -->
+            <div class="p-5 bg-neutral-900 border-t border-neutral-800 flex justify-between items-center">
+                <div class="text-xs text-neutral-500">
+                    2 Songs Selected
+                </div>
+                <div class="flex flex-col items-end">
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 font-bold">Total Duration</span>
+                    <span class="text-xl font-mono font-bold text-orange-500">09:45</span>
+                </div>
+            </div>
+            
+            <!-- Action Button -->
+            <div class="p-4 bg-neutral-900 pt-0">
+                <button class="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg shadow-orange-900/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play"></i> Start Practice
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>
